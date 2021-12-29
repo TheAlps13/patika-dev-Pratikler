@@ -1,2 +1,2 @@
 # patika-dev-Pratikler
-Patika dev ödevlerini depoladığım yer
+Patika dev ödevleri
