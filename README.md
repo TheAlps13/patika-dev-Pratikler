@@ -1,2 +1,2 @@
-# patika-dev-Pratikler
+# patika-dev-pratikler
 Patika dev ödevleri
