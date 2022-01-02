@@ -1,2 +1,2 @@
 # patika-dev-pratikler
-Patika dev ödevleri
+Patika dev C# 101 ödevleri
