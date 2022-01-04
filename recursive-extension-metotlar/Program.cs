@@ -39,6 +39,8 @@ namespace recursive_extension_metotlar
 
             //  Cift mi tek mi ?
             System.Console.WriteLine("\n" + 5.IsEvenNumb());
+
+            System.Console.WriteLine("Hello".GetFirstChar());
         }
     }
 
