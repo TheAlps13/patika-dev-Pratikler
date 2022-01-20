@@ -2,18 +2,16 @@ using System;
 
 namespace contacts
 {
-    /*class OperationHandler
+    static class OperationHandler
     {
-       
+
         public static void Operate(int operationCode)
         {
-            Console.WriteLine("Lütfen yapmak istediğiniz işlemi seçiniz :)");
-            
-            switch(operationCode)
+            switch (operationCode)
             {
                 case 1:
-                 ContactOperations.AddContact();
+                    ContactOperations.AddContact();
             }
         }
-    }*/
+    }
 }

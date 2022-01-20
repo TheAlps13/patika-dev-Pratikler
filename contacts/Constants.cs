@@ -13,5 +13,14 @@ namespace contacts
         public const string MsgConfirmRmv = "isimli kişi rehberden silinmek üzere, onaylıyor musunuz ?(y/n)";
         public const string MsgUpdatePhoneNmb = " Lütfen numarasını güncellemek istediğiniz kişinin adını ya da soyadını giriniz:";
         public const string MsgEndUpdating = "* Güncellemeyi sonlandırmak için    : (1)";
+        public const string MsgSearchType = "Arama yapmak istediğiniz tipi seçiniz.";
+        public const string MsgSearchWithName = "İsim veya soyisime göre arama yapmak için: (1)";
+        public const string MsgSearchWithNumb = "Telefon numarasına göre arama yapmak için: (2)";
+        public const string MsgSearchResult = "Arama Sonuçlarınız: ";
+        public const string MsgName = "İsim: ";
+        public const string MsgSurname = "Soyisim: ";
+        public const string MsgPhoneNumb = "Telefon Numarası: ";
+        public const string Asteriks = "**********************************************";
+
     }
 }

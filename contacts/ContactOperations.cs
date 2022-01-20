@@ -18,7 +18,7 @@ namespace contacts
 
         public static void RemoveContact()
         {
-
+            
         }
     }
 }
