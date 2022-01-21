@@ -7,11 +7,11 @@ namespace contacts
 
         public static void Operate(int operationCode)
         {
-            switch (operationCode)
+           /* switch (operationCode)
             {
                 case 1:
                     ContactOperations.AddContact();
-            }
+            }*/
         }
     }
 }

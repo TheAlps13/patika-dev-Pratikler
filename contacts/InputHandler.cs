@@ -2,9 +2,9 @@ namespace contacts
 {
     static class InputHandler
     {
-        public static Begin()
+       /* public static Begin()
         {
             Console.WriteLine(Constants.MsgSelectOperation);
-        }
+        }*/
     }
 }
