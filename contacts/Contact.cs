@@ -2,7 +2,7 @@ using System;
 
 namespace contacts
 {
-    class Contact
+    public class Contact
     {
         private string name;
         private string surname;
@@ -40,6 +40,14 @@ namespace contacts
 
                 phoneNumber = value;
             }
+        }
+
+        public void Show()
+        {
+            Console.WriteLine(Messages.Name + Name);
+            Console.WriteLine(Messages.Surname + Surname);
+            Console.WriteLine(Messages.PhoneNmb + PhoneNumber);
+            Console.WriteLine("-");
         }
     }
 }
