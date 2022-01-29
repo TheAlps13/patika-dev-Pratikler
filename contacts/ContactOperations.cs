@@ -32,41 +32,223 @@ namespace contacts
                 }
                 catch (ArgumentNullException)
                 {
-                    Console.WriteLine("Hata ! Herhangi bir değeri eksik girdiniz, tekrar deneyiniz");
+                    Console.WriteLine(Messages.ErrMissingInfo);
+                }
+            }
+            Console.WriteLine(Messages.AddSuccess);
+        }
+
+        public static void RemoveContact(List<Contact> contacts)
+        {
+            string nameOrSurname;
+            int operationNumb;
+            // If we get an empty string, give a warning and re-run this bloc of code
+            while (true)
+            {
+                try
+                {
+                    Console.Write(Messages.EnterNameOrSurnameToRmv);
+                    nameOrSurname = Console.ReadLine();
+
+                    if (String.IsNullOrEmpty(nameOrSurname))
+                        throw new ArgumentNullException();
+
+                    foreach (Contact contact in contacts)
+                    {
+                        if (contact.Name.Equals(nameOrSurname) || contact.Surname.Equals(nameOrSurname))
+                        {
+                            contacts.Remove(contact);
+                            Console.WriteLine(Messages.RmvSuccess);
+                            return;
+                        }
+                    }
+
+                    while (true)
+                    {
+                        Console.WriteLine(Messages.NotFound + "\n" + Messages.EndRemove + "\n" + Messages.TryAgain);
+                        try
+                        {
+                            operationNumb = Int32.Parse(Console.ReadLine());
+                            if (operationNumb < 1 || operationNumb > 2)
+                                throw new Exception();
+
+                            if (operationNumb == 1)
+                                return; // End removing
+                            if (operationNumb == 2)
+                                break;
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine(Messages.SelectionError);
+                        }
+                    }
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine(Messages.EmptyFieldErr);
                 }
             }
         }
 
-        public static bool RemoveNumb(List<Contact> contacts)
+        public static void UpdateContact(List<Contact> contacts) // Only updates phone number
         {
-            string nameOrSurname;
-
-            // If we get an empty string, give a warning and re-run this bloc of code
-                retry:
+            string nameOrSurname, phoneNumb;
+            int operationNumb;
+            while (true)
+            {
+                try
                 {
-                    Console.Write(Messages.EnterNameOrSurnameToRmv);
+                    Console.Write(Messages.EnterNameOrSurnameToUpdate);
                     nameOrSurname = Console.ReadLine();
-                }
-                // Empty string check
-                if(String.IsNullOrEmpty(nameOrSurname))
-                {
-                    Console.WriteLine("Hata ! Bilgiler boş bırakılamaz");
-                    goto retry; // Go back till something properly entered
-                }
 
-                foreach (Contact contact in contacts)
-                {
-                    if(contact.Name.Equals(nameOrSurname) || contact.Surname.Equals(nameOrSurname))
+                    Console.Write(Messages.EnterPhoneNmb);
+                    phoneNumb = Console.ReadLine();
+
+                    if (String.IsNullOrEmpty(nameOrSurname) || String.IsNullOrEmpty(phoneNumb))
+                        throw new ArgumentNullException();
+
+                    for (int i = 0; i < contacts.Count; i++)
                     {
-                        contacts.Remove(contact);
-                        return true;
+                        if (contacts[i].Name.Equals(nameOrSurname) || contacts[i].Surname.Equals(nameOrSurname))
+                        {
+                            contacts[i].PhoneNumber = phoneNumb;
+                            Console.WriteLine(Messages.UpdateSuccess);
+                            return;
+                        }
+                    }
+
+                    while (true)
+                    {
+                        Console.WriteLine(Messages.NotFound + "\n" + Messages.EndUpdate + "\n" + Messages.TryAgain);
+                        try
+                        {
+                            operationNumb = Int32.Parse(Console.ReadLine());
+                            if (operationNumb < 1 || operationNumb > 2)
+                                throw new Exception();
+
+                            if (operationNumb == 1)
+                                return; // End removing
+                            if (operationNumb == 2)
+                                break;
+
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine(Messages.SelectionError);
+                        }
                     }
                 }
-
-                
-                return false;
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine(Messages.EmptyFieldErr);
+                }
+            }
         }
 
+        public static void ListContacts(List<Contact> contacts)
+        {
+            if (contacts.Count != 0)
+            {
+                Console.WriteLine(Messages.ContactList);
+                foreach (Contact contact in contacts)
+                {
+                    contact.Show();
+                }
+            }
+            else
+                Console.WriteLine(Messages.NothingToShow);
+        }
 
+        public static void SearchContact(List<Contact> contacts)
+        {
+            int operationNumb;
+            string nameOrSurname, phoneNumb;
+            bool isAnyFound;
+            while (true)
+            {
+                isAnyFound = false;
+                while (true)
+                {
+                    Console.WriteLine(Messages.SearchType);
+                    try
+                    {
+                        operationNumb = Int32.Parse(Console.ReadLine());
+                        if (operationNumb < 1 || operationNumb > 2)
+                            throw new Exception();
+
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine(Messages.SelectionError);
+                    }
+                }
+                try
+                {
+
+                    if (operationNumb == 1)
+                    {
+                        Console.Write(Messages.EnterNameOrSurnameToSearch);
+                        nameOrSurname = Console.ReadLine();
+                        if (String.IsNullOrEmpty(nameOrSurname))
+                            throw new ArgumentNullException();
+
+                        Console.WriteLine(Messages.SearchResult);
+                        foreach (Contact contact in contacts)
+                        {
+                            if (contact.Name.Equals(nameOrSurname) || contact.Surname.Equals(nameOrSurname))
+                            {
+                                contact.Show();
+                                isAnyFound = true;
+                            }
+                        }
+                    }
+                    if (operationNumb == 2)
+                    {
+                        Console.Write(Messages.EnterPhoneNmb);
+                        phoneNumb = Console.ReadLine();
+                        if (String.IsNullOrEmpty(phoneNumb))
+                            throw new ArgumentNullException();
+
+                        Console.WriteLine(Messages.SearchResult);
+                        foreach (Contact contact in contacts)
+                        {
+                            if (contact.PhoneNumber.Equals(phoneNumb))
+                            {
+                                contact.Show();
+                                isAnyFound = true;
+                            }
+                        }
+                    }
+
+                    if (isAnyFound)
+                        return;
+
+                    while (true)
+                    {
+                        Console.WriteLine(Messages.NotFound + "\n" + Messages.EndSearch + "\n" + Messages.TryAgain);
+                        try
+                        {
+                            operationNumb = Int32.Parse(Console.ReadLine());
+                            if (operationNumb < 1 || operationNumb > 2)
+                                throw new Exception();
+
+                            if (operationNumb == 1)
+                                return; // End removing
+                            if (operationNumb == 2)
+                                break;
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine(Messages.SelectionError);
+                        }
+                    }
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine(Messages.EmptyFieldErr);
+                }
+            }
+        }
     }
 }
