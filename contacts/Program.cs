@@ -8,7 +8,7 @@ namespace contacts
         static void Main(string[] args)
         {
             List<Contact> contacts = new List<Contact>(TestContacts.InitialContacts);
-            OperationHandler.Start(contacts);
+            InputHandler.Start(contacts);
         }
     }
 }

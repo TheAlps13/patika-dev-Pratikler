@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace contacts
 {
-    public static class OperationHandler
+    // This class calls related functions based on user input
+    public static class InputHandler
     {
-
         public static void Start(List<Contact> contacts)
         {
             int operationCode = 0;

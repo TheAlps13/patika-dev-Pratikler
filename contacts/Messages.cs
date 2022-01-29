@@ -2,7 +2,7 @@ namespace contacts
 {
     public struct Messages
     {
-        public const string SelectOperation = "Lütfen yapmak istediğiniz işlemi seçiniz :)\n*******************************************\n(1) Yeni Numara Kaydet\n(2) Varolan Numarayı Sil\n(3) Varolan Numarayı Güncelle\n(4) Rehberi Listele\n(5) Rehberde Arama Yap\n(6) Çıkış";
+        public const string SelectOperation = "Lütfen yapmak istediğiniz işlemi seçiniz :)\n*******************************************\n(1) Yeni Kişi Ekle\n(2) Varolan Kişiyi Sil\n(3) Varolan Kişiyi Güncelle\n(4) Rehberi Listele\n(5) Rehberde Arama Yap\n(6) Çıkış";
         public const string EnterName = "Lütfen isim giriniz             :";
         public const string EnterSurname = "Lütfen soyisim giriniz          :";
         public const string EnterPhoneNmb = "Lütfen telefon numarası giriniz :";

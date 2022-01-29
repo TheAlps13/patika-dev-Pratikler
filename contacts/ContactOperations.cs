@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace contacts
 {
-    internal static class ContactOperations
+    //This class contains methods to add, remove, update, list and search for contacts
+    public static class ContactOperations
     {
         public static void AddContact(List<Contact> contacts)
         {
@@ -75,7 +76,7 @@ namespace contacts
                             if (operationNumb == 1)
                                 return; // End removing
                             if (operationNumb == 2)
-                                break;
+                                break; // Retry
                         }
                         catch (Exception)
                         {
@@ -167,11 +168,11 @@ namespace contacts
             while (true)
             {
                 isAnyFound = false;
-                while (true)
+                while (true) // Ask for which data will be used to to search
                 {
                     Console.WriteLine(Messages.SearchType);
                     try
-                    {
+                    { //If anything have entered other than options that is shown, show error and retry
                         operationNumb = Int32.Parse(Console.ReadLine());
                         if (operationNumb < 1 || operationNumb > 2)
                             throw new Exception();
@@ -185,8 +186,7 @@ namespace contacts
                 }
                 try
                 {
-
-                    if (operationNumb == 1)
+                    if (operationNumb == 1)  // Search with name or surname
                     {
                         Console.Write(Messages.EnterNameOrSurnameToSearch);
                         nameOrSurname = Console.ReadLine();
@@ -203,7 +203,7 @@ namespace contacts
                             }
                         }
                     }
-                    if (operationNumb == 2)
+                    if (operationNumb == 2) // Search with phone number
                     {
                         Console.Write(Messages.EnterPhoneNmb);
                         phoneNumb = Console.ReadLine();
@@ -221,10 +221,10 @@ namespace contacts
                         }
                     }
 
-                    if (isAnyFound)
+                    if (isAnyFound) // If found any contact that matches our search criteria, step out from this function
                         return;
 
-                    while (true)
+                    while (true) // Else show options to re search or quit
                     {
                         Console.WriteLine(Messages.NotFound + "\n" + Messages.EndSearch + "\n" + Messages.TryAgain);
                         try
