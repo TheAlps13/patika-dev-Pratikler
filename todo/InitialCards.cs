@@ -16,7 +16,7 @@ namespace todo
 
         public static List<Card> Done = new List<Card>()
         {
-            new Card() { Header = "Yılkı Atını Çağırmak", Content = "Gandalf gibi ıslık çalarak yılkı atının çağırılması", AppointedPerson = "Bahri", Size = "M" }
+            new Card() { Header = "Yılkı Atını Çağırma", Content = "Gandalf gibi ıslık çalarak yılkı atının çağırılması", AppointedPerson = "Bahri", Size = "M" }
         };
 
     }

@@ -43,7 +43,7 @@ namespace todo
                 Size = ((Card.CardSize)size).ToString(), // Converting enum to string
                 AppointedPerson = TeamMembers.IdName[appointedPersonId]
             });
-
+            Console.WriteLine("\nKişi başarıyla eklendi !\n");
         }
         public static void RemoveCard(List<Card> todo, List<Card> inProgress, List<Card> done)
         {
@@ -157,7 +157,8 @@ namespace todo
                 card.Show();
                 Console.WriteLine(Messages.SelectTheLineToMove);
                 int operationCode = Int32.Parse(Console.ReadLine());
-
+                if (operationCode < 1 || operationCode > 3) // If something wrong happened, throw an error to hell
+                    throw new Exception();
                 switch (operationCode)
                 {
                     case 1:

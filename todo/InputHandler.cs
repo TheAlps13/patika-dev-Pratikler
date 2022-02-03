@@ -11,24 +11,46 @@ namespace todo
             while (true)
             {
                 Console.WriteLine(Messages.Menu);
-                operationCode = Int32.Parse(Console.ReadLine());
-                switch (operationCode)
+                try
                 {
-                    case 1:
-                        BoardOperations.ListBoard(todo, inProgress, done);
-                        break;
-                    case 2:
-                        BoardOperations.AddCard(todo);
-                        break;
-                    case 3:
-                        BoardOperations.RemoveCard(todo, inProgress, done);
-                        break;
-                    case 4:
-                        BoardOperations.MoveCard(todo, inProgress, done);
-                        break;
-                    case 5:
-                        return;
+                    operationCode = Int32.Parse(Console.ReadLine());
+                    switch (operationCode)
+                    {
+                        case 1:
+                            BoardOperations.ListBoard(todo, inProgress, done);
+                            break;
+                        case 2:
+                            try
+                            {
+                                BoardOperations.AddCard(todo);
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine(Messages.IDNotFound);
+                            }
+                            break;
+                        case 3:
+                            BoardOperations.RemoveCard(todo, inProgress, done);
+                            break;
+                        case 4:
+                            try
+                            {
+                                BoardOperations.MoveCard(todo, inProgress, done);
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine(Messages.SelectionErr);
+                            }
+                            break;
+                        case 5:
+                            return;
+                    }
                 }
+                catch (Exception)
+                {
+                    Console.WriteLine(Messages.SelectionErr);
+                }
+
             }
         }
     }
