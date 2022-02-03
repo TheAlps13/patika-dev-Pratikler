@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace todo
 {
-    public class TeamMembers
+    public static class TeamMembers
     {
-        public readonly Dictionary<int, string> IdName = new Dictionary<int, string>()
+        public static readonly Dictionary<int, string> IdName = new Dictionary<int, string>()
         {
             {1, "Alper"},
             {2, "Bahri"},

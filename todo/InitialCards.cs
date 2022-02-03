@@ -2,11 +2,22 @@ using System.Collections.Generic;
 
 namespace todo
 {
-    class InitialCards
+    public static class InitialCards
     {
-        List<Card> InitialCardList = new List<Card>()
+        public static List<Card> ToDo = new List<Card>()
         {
-            new Card (){ Header = "Ekmek Alınması", Content = "Fırına gidip ekmek alınması", AppointedPerson = "Alper", Size = "S"}
+            new Card (){ Header = "Ekmek Alma", Content = "Fırına gidip ekmek alınması", AppointedPerson = "Alper", Size = "S" }
         };
+
+        public static List<Card> InProgress = new List<Card>()
+        {
+            new Card(){ Header = "Halay Çekme", Content = "Mahmut Tuncher show'da çılgınlar gibi halay çekilmesi", AppointedPerson = "Yunus", Size= "XL" }
+        };
+
+        public static List<Card> Done = new List<Card>()
+        {
+            new Card() { Header = "Yılkı Atını Çağırmak", Content = "Gandalf gibi ıslık çalarak yılkı atının çağırılması", AppointedPerson = "Bahri", Size = "M" }
+        };
+
     }
 }
