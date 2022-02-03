@@ -8,15 +8,22 @@ namespace todo
         private enum line { TODO, InProgress, Done, NotFound }; // To use with MoveCard function
         public static void ListBoard(List<Card> todo, List<Card> inProgress, List<Card> done)
         {
-            Console.WriteLine(Messages.TodoLine);
-            foreach (Card card in todo) // Todo line
+            Console.WriteLine(Messages.TodoLine); // Todo line
+            if (todo.Count == 0)
+                Console.WriteLine(Messages.Empty);
+            foreach (Card card in todo)
                 card.Show();
 
-            Console.WriteLine(Messages.InProgressLine);
-            foreach (Card card in inProgress) // Inprogress line
+            Console.WriteLine(Messages.InProgressLine);// Inprogress line
+            if (inProgress.Count == 0)
+                Console.WriteLine(Messages.Empty);
+            foreach (Card card in inProgress)
                 card.Show();
-            Console.WriteLine(Messages.DoneLine);
-            foreach (Card card in done) // Done line
+
+            Console.WriteLine(Messages.DoneLine); // Done line
+            if (done.Count == 0)
+                Console.WriteLine(Messages.Empty);
+            foreach (Card card in done) 
                 card.Show();
         }
         public static void AddCard(List<Card> todo)
@@ -174,6 +181,8 @@ namespace todo
                             done.Add(card);
                         break;
                 }
+                Console.WriteLine(Messages.CardMoveSuccess);
+                ListBoard(todo, inProgress, done); // If everything goes well, list fresh board
                 return;
             }
 

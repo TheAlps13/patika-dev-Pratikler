@@ -11,7 +11,7 @@ namespace todo
         public const string TodoLine = "TODO Line\n************************";
         public const string InProgressLine = "IN PROGRESS Line\n************************";
         public const string DoneLine = "DONE Line\n************************";
-        public const string Empty = "~ BOŞ ~";
+        public const string Empty = "~ BOŞ ~\n";
         public const string EnterHeader = "Başlık Giriniz                                  :";
         public const string EnterContent = "İçerik Giriniz                                  :";
         public const string EnterAppointedPers = "Kişi ID Giriniz                                    :";
@@ -27,5 +27,6 @@ namespace todo
         public const string SelectTheLineToMove = "Lütfen taşımak istediğiniz Line'ı seçiniz: \n(1) TODO\n(2) IN PROGRESS\n(3) DONE";
         public const string IDNotFound = "\nHatalı giriş yaptınız, belirtilen ID' de bir takım üyesi yok\n";
         public const string SelectionErr = "\nHata ! Girişiniz seçenekler dahilinde bir sayı olmalı.\n";
+        public const string CardMoveSuccess = "\nKart başarıyla taşındı.\n";
     }
 }
