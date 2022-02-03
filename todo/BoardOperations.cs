@@ -104,6 +104,7 @@ namespace todo
         public static void MoveCard(List<Card> todo, List<Card> inProgress, List<Card> done)
         {
             bool isAnyFound = false;
+            Card card = new();
             // User input
             string header;
             Console.WriteLine(Messages.SelectCardToMove);
@@ -113,7 +114,7 @@ namespace todo
             int maxCount = Math.Max(Math.Max(todo.Count, inProgress.Count), done.Count);
             for (int i = 0; i < maxCount; i++)
             {
-                if (i < todo.Count)
+                if (i < todo.Count) // Check if the card on todo line
                     if (todo[i].Header.Equals(header))
                     {   // User input
                         Console.WriteLine(Messages.FoundCardInf);
@@ -138,18 +139,35 @@ namespace todo
                         break;
                     }
 
-                if (i < inProgress.Count)
+                if (i < inProgress.Count) // Check if the card on in progress line
                     if (inProgress[i].Header.Equals(header))
-                    {
+                    {// User input
+                        Console.WriteLine(Messages.FoundCardInf);
+                        todo[i].Show();
+                        Console.WriteLine(Messages.SelectTheLineToMove);
+                        int operationCode = Int32.Parse(Console.ReadLine());
+                        switch (operationCode)
+                        {
+                            case 1:
+                                Console.WriteLine("Kart zaten todo line'da ");
+                                break;
+                            case 2:
+                                inProgress.Add(todo[i]);
+                                todo.RemoveAt(i);
+                                break;
+                            case 3:
+                                done.Add(todo[i]);
+                                todo.RemoveAt(i);
+                                break;
+                        }
                         isAnyFound = true;
                         break;
                     }
 
                 if (i < todo.Count)
                     if (todo[i].Header.Equals(header))
-                    {
-                        isAnyFound = true;
-                        break;
+                    { // User input
+                       
                     }
 
             }
